@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<title>The Journey Begins — LAX to Zagreb</title>
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Croatia Trip">
+<meta name="theme-color" content="#0f4c4c">
+<style>
+  :root {
+    --ink: #1c2a2e;
+    --paper: #f6f4ee;
+    --card: #ffffff;
+    --teal: #0f4c4c;
+    --amber: #c78a3d;
+    --line: #d8d3c4;
+    --muted: #6b6b62;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Georgia, 'Iowan Old Style', serif;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px 80px; }
+  .hero {
+    padding: 90px 24px 60px;
+    text-align: center;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow {
+    font-family: -apple-system, Helvetica, Arial, sans-serif;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: var(--amber);
+    font-weight: 600;
+  }
+  h1 {
+    font-size: 44px;
+    margin: 12px 0 8px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+  }
+  .subtitle {
+    font-family: -apple-system, Helvetica, Arial, sans-serif;
+    color: var(--muted);
+    font-size: 16px;
+  }
+  .leg {
+    margin-top: 64px;
+  }
+  .leg-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 6px;
+  }
+  .leg-number {
+    font-family: -apple-system, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: var(--amber);
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .leg h2 {
+    font-size: 30px;
+    font-weight: 400;
+    margin: 0;
+  }
+  .leg-sub {
+    font-family: -apple-system, Helvetica, Arial, sans-serif;
+    color: var(--muted);
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+  .photo-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 28px;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .photo-strip img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+  }
+  .narrative {
+    font-size: 18px;
+    margin-bottom: 28px;
+  }
+  .info-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 22px 26px;
+    margin-bottom: 18px;
+    font-family: -apple-system, Helvetica, Arial, sans-serif;
+  }
+  .info-card h3 {
+    font-family: Georgia, serif;
+    font-size: 19px;
+    margin: 0 0 12px;
+    color: var(--teal);
+  }
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #ece8dc;
+    font-size: 14px;
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-label { color: var(--muted); }
+  .info-value { font-weight: 600; text-align: right; }
+  .flag {
+    font-size: 13px;
+    background: #fbf1de;
+    border-left: 3px solid var(--amber);
+    padding: 10px 14px;
+    margin-top: 10px;
+    border-radius: 0 4px 4px 0;
+    color: #6b4d1f;
+  }
+  .todo {
+    font-size: 13px;
+    background: #eef4f2;
+    border-left: 3px solid var(--teal);
+    padding: 10px 14px;
+    margin-top: 10px;
+    border-radius: 0 4px 4px 0;
+    color: var(--teal);
+  }
+  .picks {
+    font-family: -apple-system, Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 24px 0;
+  }
+  .pick {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .pick .tag {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--amber);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .pick .name {
+    font-family: Georgia, serif;
+    font-size: 17px;
+    margin-bottom: 4px;
+  }
+  .pick .desc {
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .divider {
+    text-align: center;
+    color: var(--amber);
+    font-size: 20px;
+    margin: 56px 0;
+    letter-spacing: 20px;
+  }
+  .tabbar {
+    position: sticky;
+    top: 0;
+    background: var(--paper);
+    z-index: 10;
+    border-bottom: 1px solid var(--line);
+    padding: 14px 24px;
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    font-family: -apple-system, Helvetica, Arial, sans-serif;
+  }
+  .tab {
+    flex: 0 0 auto;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    background: transparent;
+    border: 1px solid var(--line);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .tab.active {
+    background: var(--teal);
+    color: #fff;
+    border-color: var(--teal);
+  }
+  .tab.stub {
+    opacity: 0.5;
+  }
+  .panel { display: none; }
+  .panel.active { display: block; }
+  .stub-panel {
+    text-align: center;
+    padding: 100px 24px;
+    color: var(--muted);
+    font-style: italic;
+    font-size: 17px;
+  }
+</style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+
+<div class="hero">
+  <div class="eyebrow">The journey begins</div>
+  <h1>LAX &rarr; Amsterdam &rarr; Zagreb &rarr; &hellip; &rarr; LAX</h1>
+  <div class="subtitle">Aug 22 &mdash; Sept 6, 2026</div>
+</div>
+
+<div class="tabbar" id="tabbar">
+  <button class="tab active" data-tab="day1">Day 1&ndash;2: Travel</button>
+  <button class="tab stub" data-tab="day3">Zagreb</button>
+  <button class="tab stub" data-tab="day6">Plitvice</button>
+  <button class="tab stub" data-tab="day7">Split</button>
+  <button class="tab stub" data-tab="day8">Hvar</button>
+  <button class="tab stub" data-tab="day9">Dubrovnik</button>
+  <button class="tab stub" data-tab="day10">Budapest</button>
+  <button class="tab stub" data-tab="day11">Return</button>
+  <button class="tab stub" data-tab="tripwide">Trip-wide</button>
+</div>
+
+<div id="map-row" style="padding: 20px 24px; border-bottom: 1px solid var(--line); background: var(--card);">
+  <div style="max-width: 860px; margin: 0 auto;">
+    <div style="font-family: -apple-system, Helvetica, Arial, sans-serif; font-size: 13px; color: var(--muted); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+      <span>Every pin from the plan, in one place &mdash; labeled by day so you can see what's nearby wherever you are.</span>
+      <span id="map-city-label" style="font-weight: 600; color: var(--teal);">Zagreb + Hvar + Dubrovnik &mdash; zoom/pan to explore</span>
+    </div>
+    <div id="trip-map" style="height: 420px; border-radius: 8px; border: 1px solid var(--line);"></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<div class="panel active" id="day1">
+
+  <div class="leg">
+    <div class="leg-header">
+      <span class="leg-number">LEG 1</span>
+      <h2>Los Angeles to Amsterdam</h2>
+    </div>
+    <div class="leg-sub">Delta 9452 &middot; World Business (Z) &middot; Sat Aug 22, 4:45pm &rarr; Sun Aug 23, 12:00pm</div>
+
+    <p class="narrative">This is the long haul, roughly 11 hours west to east, and the good news is it's the most comfortable stretch of the whole trip. World Business gets you a lie-flat seat, so plan to sleep through most of it and land in Amsterdam already on European time.</p>
+
+    <div class="info-card">
+      <h3>Getting to the airport</h3>
+      <div class="info-row"><span class="info-label">Recommended Uber departure</span><span class="info-value">10:30&ndash;10:45am from home</span></div>
+      <div class="info-row"><span class="info-label">Arrive at LAX by</span><span class="info-value">1:45pm (3 hrs before departure)</span></div>
+      <div class="info-row"><span class="info-label">Terminal</span><span class="info-value">Delta &mdash; Terminal 2 or 3 (confirm on booking)</span></div>
+      <div class="flag">Fallbrook to LAX runs 2 to 2.5 hours in normal traffic, but a Saturday afternoon departure can easily push to 3 hours with I-5 congestion. Leaving by 10:30am builds in that buffer rather than cutting it close.</div>
+    </div>
+
+    <div class="info-card">
+      <h3>At the airport</h3>
+      <div class="info-row"><span class="info-label">CLEAR</span><span class="info-value">Available at LAX &mdash; speeds up the security line</span></div>
+      <div class="info-row"><span class="info-label">Lounge access</span><span class="info-value">Delta Sky Club &mdash; included with international premium cabin</span></div>
+      <div class="info-row"><span class="info-label">Gate &amp; seat numbers</span><span class="info-value">Not yet assigned</span></div>
+      <div class="todo">Gates are typically assigned 24&ndash;48 hours before departure. Check the Delta app the day before &mdash; it'll also show your assigned seats if not already selected.</div>
+    </div>
+
+    <div class="info-card">
+      <h3>Before you board</h3>
+      <div class="info-row"><span class="info-label">Passport info in the Delta app</span><span class="info-value">Not yet added</span></div>
+      <div class="info-row"><span class="info-label">Meal selection</span><span class="info-value">Not yet selected</span></div>
+      <div class="todo">Add passport details and pick meals for all four travelers in the Delta app under Manage Trips &mdash; do this now rather than at the airport, especially for any vegetarian meal requests.</div>
+    </div>
+  </div>
+
+  <div class="divider">&middot; &middot; &middot;</div>
+
+  <div class="leg">
+    <div class="leg-header">
+      <span class="leg-number">LEG 2</span>
+      <h2>A day in Amsterdam</h2>
+    </div>
+    <div class="leg-sub">Sun Aug 23 &middot; roughly 8 hours 45 min between flights</div>
+
+    <p class="narrative">You land at 12:00pm and don't fly out again until 8:45pm &mdash; a genuinely good layover, long enough to actually leave the airport and spend an afternoon in the city rather than staring at a gate. Schiphol sits just 15&ndash;20 minutes from Amsterdam Centraal by train, so this is a real bonus day, not a stopover.</p>
+
+    <div class="info-card">
+      <h3>The realistic timeline</h3>
+      <div class="info-row"><span class="info-label">Land, clear passport control, bags</span><span class="info-value">~45 min</span></div>
+      <div class="info-row"><span class="info-label">Train to Amsterdam Centraal</span><span class="info-value">~20 min</span></div>
+      <div class="info-row"><span class="info-label">Time in the city</span><span class="info-value">~5&ndash;5.5 hours</span></div>
+      <div class="info-row"><span class="info-label">Head back by</span><span class="info-value">6:00&ndash;6:15pm</span></div>
+      <div class="info-row"><span class="info-label">Security + gate for 8:45pm departure</span><span class="info-value">Back at Schiphol by 6:45pm</span></div>
+      <div class="flag">Keep an alarm set. Schiphol security can run long in peak summer &mdash; don't cut the return closer than 2 hours before boarding.</div>
+    </div>
+
+    <p class="narrative">The plan: land in the Jordaan, rent bikes, and wander &mdash; no fixed route, just canals, hofjes, and whatever looks good. A short list of real stops to weave in along the way, not a schedule.</p>
+
+    <div class="picks">
+      <div class="pick">
+        <div class="tag">Lunch</div>
+        <div class="name">Meatless District</div>
+        <div class="desc">Fully vegan, open for lunch every day &mdash; curries, mac and cheese, vegan cr&egrave;me br&ucirc;l&eacute;e. Casual, reliable, no reservation drama.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Chocolate</div>
+        <div class="name">Chocol&aacute;tl</div>
+        <div class="desc">A proper Jordaan chocolate shop &mdash; rich hot chocolate and handmade truffles, the neighborhood's own chocolatier.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Cheese</div>
+        <div class="name">De Kaaskamer</div>
+        <div class="desc">400+ cheeses, generous samples, staff who'll talk you through Goudas and truffle cheese &mdash; genuinely the city's best, not a tourist trap. They'll vacuum-pack anything you want to take home.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Design</div>
+        <div class="name">Droog</div>
+        <div class="desc">Amsterdam's landmark design gallery &mdash; playful, conceptual Dutch objects, worth a browse for anyone into design.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Market</div>
+        <div class="name">Noordermarkt</div>
+        <div class="desc">A real neighborhood market &mdash; organic produce, antiques, local energy. Good for wandering, not a destination in itself.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Sweet stop</div>
+        <div class="name">Fresh stroopwafel</div>
+        <div class="desc">Made-to-order at a street stall, warm caramel between two thin waffles &mdash; a five-minute stop that kids remember for years.</div>
+      </div>
+    </div>
+
+    <p class="narrative">A few more worth keeping an eye out for while you're biking around, no need to plan them in, just good if you stumble on them:</p>
+
+    <div class="picks">
+      <div class="pick">
+        <div class="tag">For the kids</div>
+        <div class="name">De Winkel van Nijntje</div>
+        <div class="desc">The official Miffy shop &mdash; white, minimal, genuinely well-designed, not just a souvenir rack. Central location on Nieuwe Spiegelstraat, near the Rijksmuseum.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Dinner to go</div>
+        <div class="name">SLA</div>
+        <div class="desc">Organic grain bowls and salads built to travel &mdash; grab dinner here on the way back to the train and eat it at the gate or on the flight.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Chocolate, elevated</div>
+        <div class="name">Puccini Bomboni</div>
+        <div class="desc">The city's most-loved chocolatier &mdash; handmade bonbons in unusual flavors, kitchen visible from the street at the Staalstraat shop.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Design</div>
+        <div class="name">Frozen Fountain</div>
+        <div class="desc">A well-known Amsterdam design store for Dutch furniture and homeware &mdash; worth a look if Droog is landing well with the group.</div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h3>Practical notes</h3>
+      <div class="info-row"><span class="info-label">Bike rental</span><span class="info-value">Multiple shops in and near the Jordaan &mdash; easy walk-up rental</span></div>
+      <div class="info-row"><span class="info-label">Train ticket back</span><span class="info-value">Buy at the NS ticket machine, ~&euro;6 each way</span></div>
+      <div class="info-row"><span class="info-label">Luggage</span><span class="info-value">Consider Schiphol luggage storage if carrying more than a day bag into the city</span></div>
+    </div>
+  </div>
+
+  <div class="divider">&middot; &middot; &middot;</div>
+
+  <div class="leg">
+    <div class="leg-header">
+      <span class="leg-number">LEG 3</span>
+      <h2>Amsterdam to Zagreb</h2>
+    </div>
+    <div class="leg-sub">Delta 9435 &middot; Europe Business (Z) &middot; Sun Aug 23, 8:45pm &rarr; 10:40pm</div>
+
+    <p class="narrative">A short evening hop, under two hours, landing in Zagreb late at 10:40pm. This is a quiet, easy final leg after a full day &mdash; you'll be tired in the best way, ready to land, get to the hotel, and sleep.</p>
+
+    <div class="info-card">
+      <h3>At Schiphol before the second flight</h3>
+      <div class="info-row"><span class="info-label">Recommend arriving back at Schiphol by</span><span class="info-value">6:45pm</span></div>
+      <div class="info-row"><span class="info-label">Lounge access</span><span class="info-value">KLM/Air France or SkyTeam lounge, included with premium cabin</span></div>
+      <div class="info-row"><span class="info-label">Gate &amp; seat numbers</span><span class="info-value">Not yet assigned</span></div>
+    </div>
+
+    <div class="info-card">
+      <h3>Arrival in Zagreb</h3>
+      <div class="info-row"><span class="info-label">Land</span><span class="info-value">10:40pm, Zagreb Airport (ZAG)</span></div>
+      <div class="info-row"><span class="info-label">Passport control + bags</span><span class="info-value">~30&ndash;40 min for a family of 4</span></div>
+      <div class="info-row"><span class="info-label">Transfer to hotel</span><span class="info-value">Taxi or pre-booked transfer, ~25 min into central Zagreb</span></div>
+      <div class="todo">Book a private airport transfer or a licensed taxi in advance rather than hailing on arrival &mdash; easier with luggage and four people at 11pm. GoOpti and standard Zagreb taxi ranks both work well.</div>
+    </div>
+
+    <p class="narrative" style="text-align:center; margin-top: 40px; color: var(--muted); font-style: italic;">You'll wake up the next morning in Zagreb's Upper Town, with a full day ahead and the whole trip still in front of you.</p>
+</div>
+</div>
+
+<div class="panel" id="day3">
+
+  <div class="leg">
+    <div class="leg-header">
+      <span class="leg-number">DAY 2</span>
+      <h2>Landing night in Zagreb</h2>
+    </div>
+    <div class="leg-sub">Sunday, August 23 &mdash; late arrival</div>
+
+    <div class="photo-strip">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ban%20Jela%C4%8Di%C4%87%20square%20(13023663973).jpg" alt="Ban Jelačić Square" loading="lazy">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Zagreb,%20Dolac%20market.JPG" alt="Dolac Market" loading="lazy">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Crkva%20sv.%20Marka,%20Zagreb.jpg" alt="St. Mark's Church" loading="lazy">
+    </div>
+
+    <p class="narrative">You'll land at 10:40pm, tired and on European time already thanks to the lie-flat sleep. Nothing ambitious tonight &mdash; just the transfer, check-in, and bed.</p>
+
+    <div class="info-card">
+      <h3>Getting to the hotel</h3>
+      <div class="info-row"><span class="info-label">Passport control + bags</span><span class="info-value">~30&ndash;40 min for a family of 4</span></div>
+      <div class="info-row"><span class="info-label">Transfer</span><span class="info-value">Taxi or pre-booked transfer, ~25 min to central Zagreb</span></div>
+      <div class="todo">Book ahead rather than hailing at 11pm &mdash; <a href="https://www.gopoti.com" target="_blank">GoOpti</a> runs shared and private airport transfers.</div>
+    </div>
+  </div>
+
+  <div class="divider">&middot; &middot; &middot;</div>
+
+  <div class="leg">
+    <div class="leg-header">
+      <span class="leg-number">DAY 3</span>
+      <h2>A full day in Zagreb &mdash; the highlights</h2>
+    </div>
+    <div class="leg-sub">Monday, August 24</div>
+
+    <div class="info-card">
+      <h3>Where to stay &mdash; booked</h3>
+      <div class="info-row"><span class="info-label">Hotel Capital (Amadria Park)</span><span class="info-value">Jurišićeva 22 &mdash; a restored 1920s bank building, historic Art Deco detail, a block from Ban Jelačić Square</span></div>
+      <div class="info-row"><span class="info-label">Confirmation</span><span class="info-value">#6004737107, PIN 6416</span></div>
+      <div class="info-row"><span class="info-label">Dates</span><span class="info-value">Check-in Sun Aug 23, check-out Thu Aug 27 &mdash; 2 rooms, $1,398.93 total</span></div>
+    </div>
+
+    <h3 style="font-family: Georgia, serif; font-size: 20px; margin: 32px 0 4px;">Lower Town: Ban Jelačić Square &amp; the Green Horseshoe</h3>
+    <p class="narrative">Start here. Pastel art nouveau buildings, the city's real center of gravity. From here, walk the Green Horseshoe &mdash; 19th-century parks linking the station to the square &mdash; passing the Botanical Garden and Zrinjevac.</p>
+    <div class="picks">
+      <div class="pick">
+        <div class="tag">Landmark</div>
+        <div class="name">Zagreb Cathedral</div>
+        <div class="desc">Tallest building in Croatia, twin neo-gothic spires. Still under restoration after the 2020 earthquake &mdash; only part of the interior is viewable.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Chocolate</div>
+        <div class="name">Zagreb Chocolate Museum</div>
+        <div class="desc">A tasting tour through chocolate history, including Kraš, Croatia's own chocolate brand.</div>
+      </div>
+    </div>
+
+    <h3 style="font-family: Georgia, serif; font-size: 20px; margin: 32px 0 4px;">Dolac Market</h3>
+    <div class="picks">
+      <div class="pick">
+        <div class="tag">Anchor</div>
+        <div class="name">Dolac Market</div>
+        <div class="desc">Red umbrellas over produce, cheese, honey. Try <em>sir i vrhnje</em> (fresh cheese with cream). Also the place for authentic local souvenirs.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Brunch</div>
+        <div class="name">Broom 44</div>
+        <div class="desc">Spills onto Dolac Market &mdash; genuinely good homemade vegan and vegetarian food, served on locally thrown pottery. Dolac 8.</div>
+      </div>
+    </div>
+    <p class="narrative" style="font-size:15px;"><strong>Local tip:</strong> locals skip the grocery-store produce aisle and buy fruit and vegetables at the outdoor markets instead &mdash; slightly pricier, genuinely better.</p>
+
+    <h3 style="font-family: Georgia, serif; font-size: 20px; margin: 32px 0 4px;">Gradec &mdash; the Upper Town</h3>
+    <p class="narrative">Funicular up to the city's hilltop medieval heart. Through the Stone Gate and past the Croatian Parliament to St. Mark's.</p>
+    <div class="picks">
+      <div class="pick">
+        <div class="tag">Landmark</div>
+        <div class="name">St. Mark's Church</div>
+        <div class="desc">13th century, the tiled roof depicting Zagreb and Croatia-Slavonia's coat of arms &mdash; the city's most photographed image. Some restoration work limits close access in places, but the roof is fully visible.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Tradition</div>
+        <div class="name">Lotrščak Tower &amp; the Grič Cannon</div>
+        <div class="desc">Fired daily at noon since 1877. Climb the tower for panoramic views over both Upper and Lower Town.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Odd &amp; fun</div>
+        <div class="name">Grič Tunnel</div>
+        <div class="desc">A WWII-era shelter under the city center, now an occasional art venue.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Museum</div>
+        <div class="name">Zagreb City Museum</div>
+        <div class="desc">Set inside the former 17th-century Convent of the Clares.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider">&middot; &middot; &middot;</div>
+
+  <div class="leg">
+    <div class="leg-header">
+      <h2>Local specialties &amp; where to eat</h2>
+    </div>
+    <p class="narrative">Everything food-related in one place, from street snacks to a proper sit-down dinner.</p>
+
+    <div class="info-card">
+      <h3>What to try</h3>
+      <div class="info-row"><span class="info-label">Štrukli</span><span class="info-value">cottage cheese and sour cream pastry &mdash; Zagreb's signature dish</span></div>
+      <div class="info-row"><span class="info-label">Burek</span><span class="info-value">flaky pastry, cheese-filled is the vegetarian-friendly default &mdash; grab it fresh from a bakery, best early in the day</span></div>
+      <div class="info-row"><span class="info-label">Sarma / peka / zagrebački odrezak</span><span class="info-value">stuffed cabbage, slow-cooked meat and vegetables under a domed lid, Zagreb-style schnitzel &mdash; the dishes locals point to as most representative of the city</span></div>
+      <div class="info-row"><span class="info-label">Kremšnita</span><span class="info-value">vanilla custard cake, a Zagreb classic</span></div>
+      <div class="info-row"><span class="info-label">Ice cream</span><span class="info-value">Vincek and Orijent are the two names locals reach for; Ledo stands are everywhere for a quick scoop</span></div>
+      <div class="info-row"><span class="info-label">Kraš</span><span class="info-value">Zagreb's beloved confectionery brand &mdash; good for a sweets souvenir</span></div>
+      <div class="info-row"><span class="info-label">Rakija / pelinkovac</span><span class="info-value">fruit brandy and a bitter herbal liqueur &mdash; a bottle makes a real souvenir</span></div>
+      <div class="todo">Cuspajz (a home-style meat and vegetable stew) is popular but mostly eaten at home, rarely on menus.</div>
+    </div>
+
+    <div class="info-card">
+      <h3>Grab and go</h3>
+      <div class="info-row"><span class="info-label">Mali Medo</span><span class="info-value">burek with yogurt, right on Tkalčićeva &mdash; a genuine local breakfast/snack pairing</span></div>
+      <div class="info-row"><span class="info-label">Daily Fresh</span><span class="info-value">sandwiches, cereal, fruit cups, juices &mdash; a real breakfast option</span></div>
+      <div class="info-row"><span class="info-label">Cyber Funk Café</span><span class="info-value">good smoothie</span></div>
+      <div class="info-row"><span class="info-label">Pekarne (bakeries)</span><span class="info-value">the actual local go-to for late-night pastries and sandwiches</span></div>
+      <div class="info-row"><span class="info-label">Pingvin</span><span class="info-value">the well-known late-night sandwich spot, open 24/7</span></div>
+      <div class="info-row"><span class="info-label">Slastičarnica Vincek</span><span class="info-value">the pastry shop for kremšnita with coffee, a local's go-to</span></div>
+    </div>
+
+    <div class="info-card">
+      <h3>Sit-down, casual and traditional</h3>
+      <div class="info-row"><span class="info-label">Stari Fijaker</span><span class="info-value">Mesnička 6 &mdash; old-school Croatian comfort food, pašticada, veal ragout; hearty and meat-forward, burek/gnocchi are the vegetarian options</span></div>
+      <div class="info-row"><span class="info-label">La Štruk</span><span class="info-value">Skalinska 5 &mdash; štrukli specialist, cheese and dough dumpling topped with clotted cream, genuinely vegetarian-friendly by design</span></div>
+      <div class="info-row"><span class="info-label">Vinodol</span><span class="info-value">peka-baked lamb/veal on an ivy patio; vegetarian options include house noodles, cheese croquettes, broccoli soup, plus strudel for dessert</span></div>
+      <div class="info-row"><span class="info-label">Nokturno</span><span class="info-value">budget-friendly, near Dolac</span></div>
+    </div>
+
+    <div class="info-card">
+      <h3>Genuinely vegetarian &amp; vegan</h3>
+      <div class="info-row"><span class="info-label">Zrno Bio Bistro</span><span class="info-value">organic, vegan, macrobiotic, gluten-free options &mdash; a real local favorite, worth booking ahead for lunch</span></div>
+      <div class="info-row"><span class="info-label">Vegehop</span><span class="info-value">small, tucked off Vlaška Street, fully vegan/vegetarian, generous portions</span></div>
+      <div class="info-row"><span class="info-label">Green Point</span><span class="info-value">tofu/seitan/hemp burgers, Asian-spiced wok dishes, near Cvjetni Trg</span></div>
+      <div class="info-row"><span class="info-label">Koykan</span><span class="info-value">Japanese-leaning world food, mochi, bubble tea, a big range of vegetarian and vegan wraps and salads &mdash; a Tkalčićeva location too</span></div>
+    </div>
+
+    <div class="info-card">
+      <h3>One nicer dinner, without full fine-dining formality</h3>
+      <div class="info-row"><span class="info-label">Zinfandel's</span><span class="info-value">inside the Esplanade Hotel, Michelin-recognized, chef Ana Grgić &mdash; genuinely accommodates vegetarian and vegan with real dishes (celery-leaf risotto with truffle cream, roasted cauliflower), not an afterthought menu</span></div>
+    </div>
+  </div>
+
+  <div class="divider">&middot; &middot; &middot;</div>
+
+  <div class="info-card">
+    <h3>Fun facts for the kids</h3>
+    <div class="info-row"><span class="info-label">Croatia's coast</span><span class="info-value">1,185 islands along the Adriatic</span></div>
+    <div class="info-row"><span class="info-label">Zagreb</span><span class="info-value">capital of the EU's youngest member state</span></div>
+    <div class="info-row"><span class="info-label">Random</span><span class="info-value">nine model planets (including Pluto) are hidden around the city as a public art piece &mdash; see the optional section below for the scavenger hunt</span></div>
+  </div>
+
+  <div class="divider">&middot; &middot; &middot;</div>
+
+  <div class="leg">
+    <div class="leg-header">
+      <span class="leg-number">DAY 4</span>
+      <h2>Third full day in Zagreb</h2>
+    </div>
+    <div class="leg-sub">Tuesday, August 25</div>
+    <p class="narrative">Slovenia was cut from this trip &mdash; Zagreb is a 3-full-day stay (Aug 24&ndash;26), not a stopover. Use the optional list below to fill this day.</p>
+  </div>
+
+  <div class="divider" style="letter-spacing: 4px; font-size: 13px; color: var(--muted); text-transform: uppercase; font-family: -apple-system, sans-serif; margin: 64px 0 32px;">&mdash; Optional: build your own day &mdash;</div>
+
+  <div class="leg">
+    <p class="narrative" style="font-size:15px;">Everything below is a real, researched option for Zagreb &mdash; not a fixed plan. Dismiss anything that's not for you; it stays dismissed the whole time you're here, even if you close this and come back tomorrow. Nothing is lost &mdash; dismissed items can always be brought back.</p>
+
+    <h3 style="font-family: Georgia, serif; font-size: 18px; margin: 24px 0 8px;">Available options</h3>
+    <div class="picks" id="picker-zag-list"></div>
+    <p class="stub-note" id="picker-zag-empty" style="font-size:13px; color: var(--muted); font-style: italic;">All options dismissed.</p>
+    <div id="picker-zag-dismissed-wrap" style="margin-top:16px;">
+      <button id="picker-zag-toggle-dismissed" style="font-family:-apple-system,sans-serif; font-size:13px; background:transparent; border:1px solid var(--line); border-radius:6px; padding:6px 12px; cursor:pointer; color:var(--muted);">Show dismissed (<span id="picker-zag-dismissed-count">0</span>)</button>
+      <div class="picks" id="picker-zag-dismissed-list" style="margin-top:12px; display:none;"></div>
+    </div>
+  </div>
+
+  <div class="divider">&middot; &middot; &middot;</div>
+
+  <div class="leg">
+    <h3 style="font-family: Georgia, serif; font-size: 20px; margin: 0 0 4px;">Reference info, not itinerary items</h3>
+
+    <div class="info-card">
+      <h3>Getting around Zagreb</h3>
+      <div class="info-row"><span class="info-label">Best way</span><span class="info-value">on foot &mdash; the center is genuinely walkable</span></div>
+      <div class="info-row"><span class="info-label">Trams &amp; taxis</span><span class="info-value">reliable, but pricier than elsewhere in southeastern Europe</span></div>
+      <div class="info-row"><span class="info-label">Bikes</span><span class="info-value">rentable, city isn't fully bike-friendly yet</span></div>
+    </div>
+
+    <div class="info-card">
+      <h3>Since you're visiting in August</h3>
+      <div class="info-row"><span class="info-label">Cool off</span><span class="info-value">locals swim in the Mrežnica river outside the city</span></div>
+      <div class="info-row"><span class="info-label">Cafes</span><span class="info-value">get genuinely crowded on sunny days &mdash; don't be surprised by a wait</span></div>
+    </div>
+
+    <div class="info-card">
+      <h3>Smoking &mdash; worth knowing given migraine sensitivity</h3>
+      <div class="info-row"><span class="info-label">Indoors</span><span class="info-value">banned by law in all restaurants and enclosed cafes/bars, enforcement tightened in 2025</span></div>
+      <div class="info-row"><span class="info-label">Open terraces</span><span class="info-value">smoking generally allowed and common &mdash; where you're most likely to encounter it</span></div>
+      <div class="info-row"><span class="info-label">Small bars (under 50 sqm)</span><span class="info-value">can be licensed smoking venues &mdash; worth asking before sitting down</span></div>
+      <div class="todo">Eat indoors rather than on an open terrace if smoke is a concern; restaurants are the safest bet.</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // Generic, reusable "dismissible options" picker.
+  // Each location gets its own localStorage key, so dismissals persist
+  // for the whole stay in that city, no matter which day you open it.
+  var pickerData = {
+    zag: {
+      storageKey: 'zagOptionalState',
+      items: [
+        {id: "zg360", tag: "Viewpoint", name: "Zagreb 360°", desc: "16th-floor viewing platform, small fee, an alternative to the Lotrščak Tower view."},
+        {id: "ilica", tag: "Shopping", name: "Ilica Street", desc: "Prostor (courtyard off Mesnička, handcrafted work from emerging artists) and I-gle (sculptural couture from local designers)."},
+        {id: "tkalciceva", tag: "Street", name: "Tkalčićeva Street", desc: "Pedestrian promenade at the center of Zagreb's social life. Includes the Well of Life sculpture by Ivan Meštrović, in front of the National Theatre."},
+        {id: "britanski", tag: "Sunday only", name: "Britanski Trg flea market", desc: "Sunday-morning antiques and flea market under red umbrellas &mdash; only relevant if your day lands on a Sunday."},
+        {id: "klovicevi", tag: "Museum", name: "Klovićevi Dvori Gallery", desc: "Rotating exhibitions in a former Jesuit monastery, Upper Town."},
+        {id: "nineviews", tag: "Kid-friendly", name: "\"Nine Views\" solar system hunt", desc: "Nine model planets placed around the city in 2004 &mdash; Mars is on Tkalčićeva, Venus is in Trg Bana Jelačića."},
+        {id: "natura", tag: "Local goods", name: "Natura Croatica", desc: "Home-grown Croatian wine, olive oil, rakija &mdash; good for gifts."},
+        {id: "rastoke", tag: "Day trip", name: "Rastoke", desc: "A mill village around cascading waterfalls, coffee on the water, a real local favorite."},
+        {id: "medvednica", tag: "Day trip", name: "Medvednica Nature Park", desc: "\"Bear mountain,\" clear-day views to Slovenia and Hungary, trails for all abilities &mdash; genuinely a full day on its own."},
+        {id: "samobor", tag: "Day trip", name: "Samobor", desc: "A picturesque small town, popular local day trip."},
+        {id: "zagorje", tag: "Day trip", name: "Zagorje", desc: "Hillside region, castles, rolling countryside."},
+        {id: "msu", tag: "Art", name: "Museum of Contemporary Art", desc: "Croatia's largest art museum, across the Sava &mdash; Carsten Höller's slide runs from the top floor down."},
+        {id: "lauba", tag: "Art", name: "Lauba", desc: "Contemporary art in a former Austro-Hungarian military riding arena."},
+        {id: "botanical", tag: "Garden", name: "Botanical Garden", desc: "Near the train station, ~10,000 plant species, genuinely peaceful."},
+        {id: "streetart", tag: "Art", name: "Branimirova street art wall", desc: "80 artists turned a nondescript wall near the bus station into one of the city's most photographed sights."},
+        {id: "cica", tag: "Bar", name: "Cica", desc: "A tiny storefront bar on Tkalčićeva with 25 varieties of rakija."},
+        {id: "kavkaz", tag: "Nightlife", name: "Kavkaz", desc: "One of the city's most atmospheric cocktail bars."},
+        {id: "vipclub", tag: "Nightlife", name: "VIP Club / Bacchus Jazz Bar", desc: "Live jazz and Balkan beats."}
+      ]
+    },
+    hvar: {
+      storageKey: 'hvarOptionalState',
+      items: [
+        {id: "hv-hvartown", tag: "Day trip", name: "Hvar Town by ferry", desc: "~1h10 by catamaran from Korčula-style island hopping isn't needed here &mdash; from St. George Court, a taxi/drive to Hvar Town gets you the Fortica fortress, Cathedral of St. Stephen, and the Riva without staying overnight in the noise."},
+        {id: "hv-korcula", tag: "Island hop", name: "Korčula day trip", desc: "Old Town, city walls, the Marco Polo house legend, and Irena's coral shop &mdash; real local coral jewelry, worth a look even though we're not basing there."},
+        {id: "hv-pakleni", tag: "Island hop", name: "Pakleni Islands", desc: "Boat out to Palmižana or the smaller coves &mdash; pine forests, quiet beaches, a few laid-back restaurants. Easy half-day by water taxi."},
+        {id: "hv-vis", tag: "Island hop", name: "Vis", desc: "Further out, less touristed &mdash; the Blue Cave (via Biševo), Stiniva Beach, WWII-era sights. Best done as an organized boat day or via the private charter."},
+        {id: "hv-charter", tag: "Splurge", name: "Private boat charter", desc: "St. George Court can arrange one directly. The most flexible way to string together 2&ndash;3 islands in a day without ferry timetables."},
+        {id: "hv-brusje", tag: "Local color", name: "Brusje &amp; Malo Grablje", desc: "Nearly abandoned shepherd villages inland &mdash; Berti's Konoba in Malo Grablje is the only restaurant, real old-island atmosphere."},
+        {id: "hv-starigrad", tag: "UNESCO", name: "Stari Grad Plain", desc: "Oldest continuously cultivated agricultural landscape in Europe, ancient Greek land divisions still visible."},
+        {id: "hv-lavender", tag: "Local goods", name: "Lavender &amp; rosemary products", desc: "Hvar is known for it &mdash; roadside stands and the Velo Grablje lavender fields."},
+        {id: "hv-cooking", tag: "Experience", name: "Cooking class with a local family", desc: "Island history told through food &mdash; a nice change of pace on a slower day."}
+      ]
+    },
+    dub: {
+      storageKey: 'dubOptionalState',
+      items: [
+        {id: "db-konavle", tag: "Day trip", name: "Konavle Valley agroturizam", desc: "Garden walk, baking demo, traditional lunch, ~30 min south of the city."},
+        {id: "db-redhistory", tag: "Museum", name: "Red History Museum", desc: "Yugoslav daily life 1945&ndash;1991, told through everyday objects."},
+        {id: "db-maritimo", tag: "Sustainability", name: "Maritimo Recycling", desc: "Adriatic ocean plastic turned into useful goods &mdash; a small, worthwhile detour."},
+        {id: "db-coral", tag: "Shopping", name: "Clara Stones", desc: "Coral and stone jewelry in Dubrovnik &mdash; the local counterpart to Irena's shop on Korčula."},
+        {id: "db-yacht", tag: "Splurge", name: "Overnight yacht stay", desc: "A day sail plus an overnight anchorage (often off Lopud), sleeping aboard and watching the city walls light up from the water. A real alternative to a last hotel night."}
+      ]
+    },
+    bud: {
+      storageKey: 'budOptionalState',
+      items: [
+        {id: "bd-margaret", tag: "Lower-key", name: "Margaret Island", desc: "Calm, car-free park on the Danube &mdash; a musical fountain, a small zoo, rental bikes. Good for a slower half-day."},
+        {id: "bd-szentendre", tag: "Day trip", name: "Szentendre", desc: "Small, artsy Danube town north of the city &mdash; cobblestone lanes, galleries, a change of pace from central Budapest."},
+        {id: "bd-danubecruise", tag: "Evening", name: "Danube night cruise", desc: "Parliament and Chain Bridge lit up from the water &mdash; short, easy, genuinely worth it once."},
+        {id: "bd-housemusic", tag: "Museum", name: "House of Music", desc: "In City Park, interactive and modern &mdash; a good change of pace from historic sights."},
+        {id: "bd-labyrinth", tag: "Unusual", name: "Buda Castle Labyrinth", desc: "Cave system beneath the Castle District, atmospheric and a little spooky &mdash; fun for a 12-year-old."},
+        {id: "bd-ruinbars2", tag: "Nightlife", name: "More ruin bars beyond Szimpla", desc: "Instant (multi-room, more locals), Fogas Ház &mdash; if one ruin bar's not enough."},
+        {id: "bd-506bar", tag: "Rooftop", name: "360 Bar", desc: "Rooftop, panoramic city views, good for a sunset drink."},
+        {id: "bd-market", tag: "Food", name: "Great Market Hall", desc: "The big central market &mdash; paprika, lángos upstairs, souvenirs that aren't tourist junk."}
+      ]
+    }
+  };
+
+  function pickerLoad(loc) {
+    try {
+      var raw = localStorage.getItem(pickerData[loc].storageKey);
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) { return {}; }
+  }
+  function pickerSave(loc, state) {
+    try { localStorage.setItem(pickerData[loc].storageKey, JSON.stringify(state)); } catch (e) {}
+  }
+  function pickerRenderCard(loc, item, isDismissed) {
+    var card = document.createElement('div');
+    card.className = 'pick';
+    card.style.position = 'relative';
+    var btnLabel = isDismissed ? 'Bring back' : 'Not interested';
+    var btnColor = isDismissed ? 'var(--teal)' : '#a33';
+    card.innerHTML =
+      '<div class="tag">' + item.tag + '</div>' +
+      '<div class="name">' + item.name + '</div>' +
+      '<div class="desc">' + item.desc + '</div>' +
+      '<div style="margin-top:10px;"><button data-loc="' + loc + '" data-id="' + item.id + '" data-dismissed="' + (isDismissed ? '1' : '0') + '" style="font-size:11px; padding:3px 8px; border-radius:4px; border:1px solid var(--line); background:var(--card); cursor:pointer; color:' + btnColor + ';">' + btnLabel + '</button></div>';
+    return card;
+  }
+  function pickerRenderAll(loc) {
+    var state = pickerLoad(loc);
+    var activeList = document.getElementById('picker-' + loc + '-list');
+    var dismissedList = document.getElementById('picker-' + loc + '-dismissed-list');
+    if (!activeList) return;
+    activeList.innerHTML = '';
+    if (dismissedList) dismissedList.innerHTML = '';
+    var activeCount = 0, dismissedCount = 0;
+    pickerData[loc].items.forEach(function(item) {
+      var dismissed = !!state[item.id];
+      if (dismissed) {
+        dismissedCount++;
+        if (dismissedList) dismissedList.appendChild(pickerRenderCard(loc, item, true));
+      } else {
+        activeCount++;
+        activeList.appendChild(pickerRenderCard(loc, item, false));
+      }
+    });
+    var emptyEl = document.getElementById('picker-' + loc + '-empty');
+    if (emptyEl) emptyEl.style.display = activeCount ? 'none' : 'block';
+    var countEl = document.getElementById('picker-' + loc + '-dismissed-count');
+    if (countEl) countEl.textContent = dismissedCount;
+  }
+
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('button[data-loc]');
+    if (btn) {
+      var loc = btn.dataset.loc, id = btn.dataset.id, wasDismissed = btn.dataset.dismissed === '1';
+      var state = pickerLoad(loc);
+      if (wasDismissed) delete state[id]; else state[id] = true;
+      pickerSave(loc, state);
+      pickerRenderAll(loc);
+      return;
+    }
+    var toggleBtn = e.target.closest('button[id^="picker-"][id$="-toggle-dismissed"]');
+    if (toggleBtn) {
+      var loc2 = toggleBtn.id.replace('picker-', '').replace('-toggle-dismissed', '');
+      var wrap = document.getElementById('picker-' + loc2 + '-dismissed-list');
+      if (wrap) wrap.style.display = (wrap.style.display === 'none' ? 'block' : 'none');
+    }
+  });
+
+  window.addEventListener('DOMContentLoaded', function() {
+    Object.keys(pickerData).forEach(pickerRenderAll);
+  });
+</script>
+<div class="panel" id="day6">
+
+  <div class="leg">
+    <div class="leg-header">
+      <span class="leg-number">PLITVICE</span>
+      <h2>1 night &mdash; the hiking day</h2>
+    </div>
+    <div class="leg-sub">Arrive Aug 26 from Zagreb (Hotel Capital's checkout moved earlier), hike Aug 27, depart for Split Aug 28</div>
+
+    <div class="info-card">
+      <h3>Where to stay &mdash; booked</h3>
+      <div class="info-row"><span class="info-label">Hotel Degenija (Degenia)</span><span class="info-value">Aug 26-28, two nights. Boutique, real character &mdash; one couple returned specifically to celebrate their 50th anniversary there.</span></div>
+    </div>
+
+    <h3 style="font-family: Georgia, serif; font-size: 20px; margin: 32px 0 4px;">The hike</h3>
+    <div class="picks">
+      <div class="pick">
+        <div class="tag">Anchor</div>
+        <div class="name">Trail H (full loop)</div>
+        <div class="desc">The complete Plitvice Lakes circuit &mdash; roughly 5 hours, wooden boardwalks over turquoise lakes and waterfalls the whole way. This is the day, not a side activity.</div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h3>Getting here from Zagreb</h3>
+      <div class="info-row"><span class="info-label">Drive</span><span class="info-value">~2&ndash;2.5 hrs via the A1 motorway</span></div>
+    </div>
+
+    <div class="info-card">
+      <h3>Getting to Split the next day</h3>
+      <div class="info-row"><span class="info-label">Fast (A1 motorway)</span><span class="info-value">~3h15 direct, ~€26 in tolls</span></div>
+      <div class="info-row"><span class="info-label">Hybrid route (what we're doing)</span><span class="info-value">A1 for most of the distance, then peel off onto the D8 coastal road for a stop in Trogir before continuing into Split &mdash; real coastal character without blowing the whole day</span></div>
+      <div class="todo">Aim to leave Plitvice by 7:30&ndash;8am to have a real couple of hours in Split before the 15:10 or 17:00 catamaran onward.</div>
+    </div>
+  </div>
+
+</div>
+<div class="panel" id="day7">
+
+  <div class="leg">
+    <div class="leg-header">
+      <span class="leg-number">SPLIT</span>
+      <h2>Transit day &mdash; Roman ruins, not an overnight</h2>
+    </div>
+    <div class="leg-sub">Aug 28, a few hours between Plitvice and the catamaran to Hvar</div>
+
+    <h3 style="font-family: Georgia, serif; font-size: 20px; margin: 0 0 4px;">Diocletian's Palace</h3>
+    <p class="narrative">This isn't a single monument &mdash; it's roughly half of Split's old town, still lived in today. Everything below except the cellars/cathedral/bell tower is free to walk through.</p>
+    <div class="picks">
+      <div class="pick">
+        <div class="tag">Anchor</div>
+        <div class="name">Peristyle Square</div>
+        <div class="desc">The palace's central courtyard, still the city's main gathering space, ringed by ancient columns.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Free</div>
+        <div class="name">The Vestibule</div>
+        <div class="desc">A circular domed entrance hall open to the sky &mdash; genuinely striking, sometimes has a cappella singers taking advantage of the acoustics.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Small fee</div>
+        <div class="name">Cathedral of St. Domnius</div>
+        <div class="desc">Originally Diocletian's own mausoleum. Climb the bell tower for views over the old town and harbor.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Free</div>
+        <div class="name">The four gates</div>
+        <div class="desc">Golden, Silver, Iron, Bronze. The Golden Gate has the Gregory of Nin statue &mdash; rub the toe for luck, a real local tradition.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Small fee</div>
+        <div class="name">Diocletian's cellars</div>
+        <div class="desc">Atmospheric underground halls, a Game of Thrones filming location.</div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h3>Trogir stop en route</h3>
+      <div class="info-row"><span class="info-label">Why</span><span class="info-value">UNESCO old town, smaller and quieter than Split, right on the road in from Plitvice</span></div>
+      <div class="info-row"><span class="info-label">Time</span><span class="info-value">~1 hour is enough &mdash; cathedral, waterfront, a coffee</span></div>
+    </div>
+
+    <div class="info-card">
+      <h3>Catamaran to Hvar</h3>
+      <div class="info-row"><span class="info-label">Aim for</span><span class="info-value">the 15:10 or 17:00 departure &mdash; both land in Hvar Town direct, ~1 hour crossing</span></div>
+      <div class="info-row"><span class="info-label">Rental car</span><span class="info-value">return it at the Split office/port before boarding &mdash; no cars on the catamaran</span></div>
+    </div>
+  </div>
+
+</div>
+<div class="panel" id="day8">
+
+  <div class="leg">
+    <div class="leg-header">
+      <span class="leg-number">HVAR</span>
+      <h2>4.5 days &mdash; rest, wellness, island-hopping</h2>
+    </div>
+    <div class="leg-sub">Arrive evening Aug 28 &middot; full days Aug 29&ndash;Sept 1 &middot; birthday Sept 1</div>
+
+    <div class="info-card">
+      <h3>Where to stay &mdash; booked</h3>
+      <div class="info-row"><span class="info-label">St. George Court</span><span class="info-value">Humac, the quiet interior of the island &mdash; a remote cluster of stone villas, off-grid (solar/generator, no A/C needed), 11m infinity pool, tennis court, private chef and yacht charter available. Booked via Hvar Away, Aug 28&ndash;Sept 1. A car is needed to get around from here.</span></div>
+    </div>
+
+    <h3 style="font-family: Georgia, serif; font-size: 20px; margin: 32px 0 4px;">Hvar Town</h3>
+    <div class="picks">
+      <div class="pick">
+        <div class="tag">Landmark</div>
+        <div class="name">Franciscan Monastery</div>
+        <div class="desc">A Last Supper painting by Venetian artist Matteo Ingoli fills the back wall of the dining hall &mdash; a genuine, uncrowded cultural highlight.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Views</div>
+        <div class="name">Fortica Fortress</div>
+        <div class="desc">Overlooks Hvar Town and the Pakleni Islands &mdash; worth the climb for the view alone.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Landmark</div>
+        <div class="name">Cathedral of St. Stephen</div>
+        <div class="desc">Main square, construction spans the 6th to 17th century, so Gothic, Romanesque, and Renaissance all show up in the same building. The bell tower is the real standout; a small entrance fee, no photos allowed inside.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Walk</div>
+        <div class="name">Riva Promenade</div>
+        <div class="desc">Harbor views, easy evening stroll, gelato stops.</div>
+      </div>
+    </div>
+
+    <h3 style="font-family: Georgia, serif; font-size: 20px; margin: 32px 0 4px;">Stari Grad &amp; the ghost villages</h3>
+    <p class="narrative">Stari Grad Plain is UNESCO-listed &mdash; one of the oldest continuously cultivated agricultural landscapes in Europe, an ancient Greek settlement with ~120 archaeologists having worked the site.</p>
+    <div class="picks">
+      <div class="pick">
+        <div class="tag">History</div>
+        <div class="name">Latin Bridge, Stari Grad</div>
+        <div class="desc">Where Franz Ferdinand was assassinated &mdash; the actual trigger for WWI, genuinely surprising history for Hvar.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Ghost village</div>
+        <div class="name">Brusje</div>
+        <div class="desc">A nearly abandoned shepherd's village &mdash; St. George parish church, real texture.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Ghost village</div>
+        <div class="name">Malo Grablje</div>
+        <div class="desc">Deserted since the 1960s &mdash; a preserved olive mill, old church, and well. Berti's Konoba is the only working restaurant here, worth the stop for a chat with the owner and a traditional lunch.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Nature</div>
+        <div class="name">Lavender fields, Velo Grablje</div>
+        <div class="desc">A genuine slow-immersion activity &mdash; wander or cycle through, not a tour-bus stop.</div>
+      </div>
+    </div>
+
+    <h3 style="font-family: Georgia, serif; font-size: 20px; margin: 32px 0 4px;">One day on the water</h3>
+    <p class="narrative">Given the private charter is on the table, this is the day to use it. A private boat gives you Vis, the Blue Cave, Stiniva Beach, and quiet coves at your own pace instead of a fixed ferry schedule &mdash; a real "you can't get this anywhere else" day for the trip.</p>
+    <div class="info-card">
+      <div class="info-row"><span class="info-label">Private charter</span><span class="info-value">Vis, Blue Cave, Stiniva Beach, hidden coves &mdash; the recommended version of this day</span></div>
+      <div class="info-row"><span class="info-label">Alternatura (fallback)</span><span class="info-value">If a private charter doesn't come together &mdash; jeep tours, Blue Cave, Cold War submarine tunnels, genuinely local operator on Vis</span></div>
+      <div class="info-row"><span class="info-label">Palmižana (lighter option)</span><span class="info-value">A short boat ride from Hvar Town, crystal water, but reviews are genuinely mixed &mdash; some call it paradise, others a crowded tourist trap with pricey sunbeds and thin facilities. Fine for a few hours, not worth building a full day around.</span></div>
+    </div>
+
+    <h3 style="font-family: Georgia, serif; font-size: 20px; margin: 32px 0 4px;">Birthday, Sept 1</h3>
+    <p class="narrative">A light day &mdash; pool or beach time, no ambitious sightseeing. Dinner is the anchor.</p>
+    <div class="info-card">
+      <div class="info-row"><span class="info-label">Zoi</span><span class="info-value">Stari Grad, modern Dalmatian</span></div>
+      <div class="info-row"><span class="info-label">Giaxa</span><span class="info-value">Hvar Town, upscale, garden setting</span></div>
+    </div>
+  </div>
+
+  <div class="divider">&middot; &middot; &middot;</div>
+
+  <div class="leg">
+    <h3 style="font-family: Georgia, serif; font-size: 20px; margin: 0 0 4px;">Food</h3>
+    <div class="info-card">
+      <h3>Casual &amp; traditional</h3>
+      <div class="info-row"><span class="info-label">Konoba Menego</span><span class="info-value">Hvar Town, traditional, hearty vegetarian options</span></div>
+      <div class="info-row"><span class="info-label">Berti's Konoba</span><span class="info-value">Malo Grablje, the day you're there &mdash; see above</span></div>
+      <div class="info-row"><span class="info-label">Jurin Podrum</span><span class="info-value">Stari Grad, family-run home-style Croatian &mdash; genuinely excellent, but meat and seafood-forward (wild boar stew, octopus, cuttlefish); the homemade olive oil and bread are the vegetarian-safe highlight</span></div>
+    </div>
+
+    <div class="info-card">
+      <h3>Genuinely vegetarian &amp; vegan</h3>
+      <div class="info-row"><span class="info-label">Nook</span><span class="info-value">Stari Grad &mdash; a real vegan/vegetarian kitchen, not just a menu accommodation. Garden courtyard, naan, curries, truffle fries, consistently the standout meal for vegetarian travelers in reviews. The strongest pick on the island for this family.</span></div>
+      <div class="todo">Paradise Garden and Terra Restaurant (Maslina Resort) both carry a "vegetarian friendly" tag on some travel sites, but their actual reviews are seafood and meat-heavy (lobster tagliatelle, tuna tartare, scallops) &mdash; one Terra review specifically describes a vegan guest getting meat/seafood removed from existing dishes rather than a real vegan plate, at full fine-dining price. Skip both for this group; Nook is the better bet.</div>
+    </div>
+
+    <div class="info-card">
+      <h3>Sweet &amp; local goods</h3>
+      <div class="info-row"><span class="info-label">Lavender honey &amp; rosemary products</span><span class="info-value">local stalls, genuine Hvar souvenirs</span></div>
+      <div class="info-row"><span class="info-label">Gelato</span><span class="info-value">on the Riva Promenade</span></div>
+      <div class="info-row"><span class="info-label">Figs &amp; fresh fruit</span><span class="info-value">the market, seasonal</span></div>
+    </div>
+
+    <div class="info-card">
+      <h3>If there's room for one more thing</h3>
+      <div class="info-row"><span class="info-label">Cooking class</span><span class="info-value">a local Croatian family teaches island history and tradition through food &mdash; a genuinely hands-on alternative to another restaurant meal</span></div>
+      <div class="info-row"><span class="info-label">Hvar Loggia</span><span class="info-value">the elegant Renaissance facade near the main square, obelisks and clock tower &mdash; worth a glance while walking past, not a dedicated stop</span></div>
+    </div>
+  </div>
+
+  <div class="divider" style="letter-spacing: 4px; font-size: 13px; color: var(--muted); text-transform: uppercase; font-family: -apple-system, sans-serif; margin: 64px 0 32px;">&mdash; Optional: island hopping &amp; extras &mdash;</div>
+
+  <div class="leg">
+    <p class="narrative" style="font-size:15px;">You've got real flexibility here &mdash; St. George Court is a base, not a schedule. Dismiss what's not for you; it stays dismissed for the rest of your Hvar stay.</p>
+    <h3 style="font-family: Georgia, serif; font-size: 18px; margin: 24px 0 8px;">Available options</h3>
+    <div class="picks" id="picker-hvar-list"></div>
+    <p class="stub-note" id="picker-hvar-empty" style="font-size:13px; color: var(--muted); font-style: italic;">All options dismissed.</p>
+    <div style="margin-top:16px;">
+      <button id="picker-hvar-toggle-dismissed" style="font-family:-apple-system,sans-serif; font-size:13px; background:transparent; border:1px solid var(--line); border-radius:6px; padding:6px 12px; cursor:pointer; color:var(--muted);">Show dismissed (<span id="picker-hvar-dismissed-count">0</span>)</button>
+      <div class="picks" id="picker-hvar-dismissed-list" style="margin-top:12px; display:none;"></div>
+    </div>
+  </div>
+
+</div>
+<div class="panel" id="day9">
+
+  <div class="leg">
+    <div class="leg-header">
+      <span class="leg-number">DUBROVNIK</span>
+      <h2>2 days &mdash; walls, water, and one real vegetarian find</h2>
+    </div>
+    <div class="leg-sub">Sept 3&ndash;4, evening flight to Zagreb on Sept 4 for the Sept 5 departure</div>
+
+    <div class="info-card">
+      <h3>Where to stay</h3>
+      <div class="info-row"><span class="info-label">Villa Dubrovnik</span><span class="info-value">Splurge option &mdash; direct sea access, sun-loungers on the rocks, shuttle to Old Town, genuinely one of the best hotels in the city</span></div>
+      <div class="info-row"><span class="info-label">Karmen Apartments (Van Bloemen)</span><span class="info-value">Inside the Old Town walls, family-run, artistic and characterful, the budget-boutique pick</span></div>
+    </div>
+
+    <h3 style="font-family: Georgia, serif; font-size: 20px; margin: 32px 0 4px;">Old Town</h3>
+    <div class="picks">
+      <div class="pick">
+        <div class="tag">Anchor</div>
+        <div class="name">City Walls</div>
+        <div class="desc">2&ndash;3 hour walk atop the full circuit, views over the Old Town and the Adriatic. Go early morning to beat the heat and crowds &mdash; genuinely a full-day-defining activity.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Viewpoint</div>
+        <div class="name">Mount Srđ cable car</div>
+        <div class="desc">A few minutes up, 360-degree panorama over the walls, the sea, Lokrum, and the Elaphiti Islands. A restaurant and bar at the top for sunset.</div>
+      </div>
+    </div>
+
+    <h3 style="font-family: Georgia, serif; font-size: 20px; margin: 32px 0 4px;">Water day</h3>
+    <div class="picks">
+      <div class="pick">
+        <div class="tag">Island</div>
+        <div class="name">Lokrum</div>
+        <div class="desc">15-minute boat ride from the Old Town harbor. Free-roaming peacocks, botanical gardens, a former Benedictine monastery, swimming coves. Easily a half or full day.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Beach</div>
+        <div class="name">Banje Beach</div>
+        <div class="desc">Five minutes from the Old Town, calm sapphire water, public and private sections. Genuinely nice for swimming, though it leans into a beach-club scene by afternoon.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider">&middot; &middot; &middot;</div>
+
+  <div class="leg">
+    <h3 style="font-family: Georgia, serif; font-size: 20px; margin: 0 0 4px;">Food</h3>
+
+    <div class="info-card">
+      <h3>The real find</h3>
+      <div class="info-row"><span class="info-label">Nishta</span><span class="info-value">Prijeko street, Old Town &mdash; fully vegan/vegetarian, a genuine Dubrovnik institution, not just a fallback. Even a vegan version of ćevapčići. Book ahead, it's small.</span></div>
+    </div>
+
+    <div class="info-card">
+      <h3>Traditional &amp; hearty, meat-forward</h3>
+      <div class="info-row"><span class="info-label">Konoba Dubrava</span><span class="info-value">Bosanka village, outside the walls &mdash; peka cooked under an iron bell, genuinely authentic. Worth calling ahead to ask about a vegetarian version rather than assuming.</span></div>
+      <div class="info-row"><span class="info-label">Pantarul</span><span class="info-value">Local favorite, less touristy area &mdash; menu leans heavily seafood, but does have a vegetarian risotto option if you go</span></div>
+    </div>
+
+    <div class="info-card">
+      <h3>Cliffside drinks</h3>
+      <div class="info-row"><span class="info-label">Buža Bar</span><span class="info-value">Built into the cliffs outside the walls, sunset views, cliff-jumping crowd &mdash; no food, no bathroom, worth it for the view alone</span></div>
+    </div>
+  </div>
+
+  <div class="divider" style="letter-spacing: 4px; font-size: 13px; color: var(--muted); text-transform: uppercase; font-family: -apple-system, sans-serif; margin: 64px 0 32px;">&mdash; Optional: build your own day &mdash;</div>
+
+  <div class="leg">
+    <div class="picks">
+      <div class="pick">
+        <div class="tag">History</div>
+        <div class="name">Konavle Valley agroturizam</div>
+        <div class="desc">A family-run villa, garden walk, fruit-picking, baking demo, traditional lunch &mdash; genuinely hands-on and local, 30 minutes south.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Museum</div>
+        <div class="name">Red History Museum</div>
+        <div class="desc">Daily life during socialist Yugoslavia, 1945&ndash;1991 &mdash; a real layer of history most visitors skip.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Values-aligned</div>
+        <div class="name">Maritimo Recycling</div>
+        <div class="desc">Turns Adriatic plastic waste into useful goods &mdash; a good hands-on stop if the kids like eco-focused activities.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Active</div>
+        <div class="name">Sea kayak to Lokrum</div>
+        <div class="desc">Paddle beneath the city walls for a completely different vantage point than the water-taxi.</div>
+      </div>
+      <div class="pick">
+        <div class="tag">Water sports</div>
+        <div class="name">Dubrovnik Water Sports (Eastwest Beach Club)</div>
+        <div class="desc">At Banje Beach &mdash; boat charters, kayaking, wakeboarding, day rentals to nearby islands.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider" style="letter-spacing: 4px; font-size: 13px; color: var(--muted); text-transform: uppercase; font-family: -apple-system, sans-serif; margin: 64px 0 32px;">&mdash; More options &mdash;</div>
+
+  <div class="leg">
+    <h3 style="font-family: Georgia, serif; font-size: 18px; margin: 24px 0 8px;">Available options</h3>
+    <div class="picks" id="picker-dub-list"></div>
+    <p class="stub-note" id="picker-dub-empty" style="font-size:13px; color: var(--muted); font-style: italic;">All options dismissed.</p>
+    <div style="margin-top:16px;">
+      <button id="picker-dub-toggle-dismissed" style="font-family:-apple-system,sans-serif; font-size:13px; background:transparent; border:1px solid var(--line); border-radius:6px; padding:6px 12px; cursor:pointer; color:var(--muted);">Show dismissed (<span id="picker-dub-dismissed-count">0</span>)</button>
+      <div class="picks" id="picker-dub-dismissed-list" style="margin-top:12px; display:none;"></div>
+    </div>
+  </div>
+
+</div>
+<div class="panel" id="day10">
+
+  <div class="leg">
+    <div class="leg-header">
+      <span class="leg-number">BUDAPEST</span>
+      <h2>The finale &mdash; baths, architecture, real food</h2>
+    </div>
+    <div class="leg-sub">Arrive from Dubrovnik (Wizz Air) Sept 2 &middot; full days Sept 3&ndash;5 &middot; depart 6am Sept 6</div>
+
+    <div class="info-card">
+      <h3>Where to stay</h3>
+      <div class="info-row"><span class="info-label">Boutique Hotel Victoria</span><span class="info-value">Buda side of the Danube, on the water &mdash; genuinely quiet at night (request a rear-facing room if anyone's a light sleeper), Parliament/Chain Bridge views, sauna, 5-min walk to the Castle Hill funicular. 9.3&ndash;9.6 rated.</span></div>
+    </div>
+
+    <h3 style="font-family: Georgia, serif; font-size: 20px; margin: 32px 0 4px;">Day 1 &mdash; Buda</h3>
+    <p class="narrative">Castle Hill: Buda Castle and the Hungarian National Gallery, then Fisherman's Bastion for the best skyline view in the city, and Matthias Church with its tiled roof. Lunch in the Castle District, then Gell&eacute;rt Hill for a 360&deg; view from the Citadella. End the day at Gell&eacute;rt Thermal Bath &mdash; real Ottoman-era architecture, not a tourist gimmick.</p>
+
+    <h3 style="font-family: Georgia, serif; font-size: 20px; margin: 32px 0 4px;">Day 2 &mdash; Pest &amp; City Park</h3>
+    <p class="narrative">Heroes' Square and City Park, Vajdahunyad Castle, then Sz&eacute;chenyi Thermal Bath &mdash; the big iconic outdoor one, 74&deg;C springs, genuinely fun for the whole family. Walk Andr&aacute;ssy Avenue's UNESCO boulevard past the Opera House.</p>
+
+    <h3 style="font-family: Georgia, serif; font-size: 20px; margin: 32px 0 4px;">Day 3 &mdash; Jewish Quarter</h3>
+    <p class="narrative">Doh&aacute;ny Street Synagogue (largest in Europe), then the mural-covered lanes of the Jewish Quarter. Central Market Hall for l&aacute;ngos and paprika. Evening in the ruin bar district &mdash; Szimpla Kert is the original, worth one visit despite being touristy.</p>
+
+    <h3 style="font-family: Georgia, serif; font-size: 20px; margin: 32px 0 4px;">Food</h3>
+    <div class="picks">
+      <div class="pick"><strong>Caf&eacute; K&ouml;r</strong> &mdash; intimate bistro, Hungarian + international, a genuine local favorite</div>
+      <div class="pick"><strong>Rosenstein Vendéglő</strong> &mdash; venerable, hearty, traditional Hungarian fare</div>
+      <div class="pick"><strong>P&ouml;rc &amp; Pr&eacute;zli &Eacute;tterem</strong> &mdash; classic Hungarian dishes, classic setting</div>
+      <div class="pick"><strong>Gett&oacute; Gulyás</strong> &mdash; peasant-root dishes, slow-cooked stews</div>
+      <div class="pick"><strong>Gundel</strong> &mdash; Budapest's most famous restaurant, touristy but worth it once, garden setting</div>
+      <div class="pick"><strong>Mazel Tov</strong> &mdash; ruin bar-meets-restaurant, Mediterranean small plates in a lush greenhouse courtyard</div>
+      <div class="pick"><strong>LUI Budapest</strong> &mdash; croissants, brioche tarts, pastries</div>
+      <div class="pick"><strong>Caf&eacute; Gerbeaud</strong> &mdash; Budapest's most famous historic coffeehouse</div>
+      <div class="pick"><strong>New York Caf&eacute;</strong> &mdash; ornate Baroque-meets-Viennese caf&eacute;, an experience in itself</div>
+      <div class="pick"><strong>Espresso Embassy</strong> &mdash; third-wave coffee, helped put Budapest on the specialty-coffee map</div>
+    </div>
+    <p class="narrative" style="margin-top: 16px;">Full shortlist from research (bookmark for later): 21 - Magyar Vendéglő, Babel (Michelin), Cabrio, Marumba, M&Aacute;K by mizseijani, Salt (Michelin), Stand (2 Michelin stars), Pierrot, Portobello, Pebbles Natural Wine &amp; Kitchen, D&eacute;ryn&eacute;, Franziska, ESCA, Onyx, Ess&ecirc;ncia.</p>
+
+  </div>
+
+  <div class="divider" style="letter-spacing: 4px; font-size: 13px; color: var(--muted); text-transform: uppercase; font-family: -apple-system, sans-serif; margin: 64px 0 32px;">&mdash; Optional: more of the city &mdash;</div>
+
+  <div class="leg">
+    <h3 style="font-family: Georgia, serif; font-size: 18px; margin: 24px 0 8px;">Available options</h3>
+    <div class="picks" id="picker-bud-list"></div>
+    <p class="stub-note" id="picker-bud-empty" style="font-size:13px; color: var(--muted); font-style: italic;">All options dismissed.</p>
+    <div style="margin-top:16px;">
+      <button id="picker-bud-toggle-dismissed" style="font-family:-apple-system,sans-serif; font-size:13px; background:transparent; border:1px solid var(--line); border-radius:6px; padding:6px 12px; cursor:pointer; color:var(--muted);">Show dismissed (<span id="picker-bud-dismissed-count">0</span>)</button>
+      <div class="picks" id="picker-bud-dismissed-list" style="margin-top:12px; display:none;"></div>
+    </div>
+  </div>
+</div>
+<div class="panel" id="day11">
+
+  <div class="leg">
+    <div class="leg-header">
+      <span class="leg-number">RETURN</span>
+      <h2>Budapest to home</h2>
+    </div>
+    <div class="leg-sub">Sun Sept 6</div>
+    <div class="info-card">
+      <div class="info-row"><span class="info-label">Budapest &rarr; Amsterdam</span><span class="info-value">DL9293 (KLM) &middot; 6:00am &rarr; 8:05am</span></div>
+      <div class="info-row"><span class="info-label">Amsterdam &rarr; Los Angeles</span><span class="info-value">DL9225 (KLM) &middot; 9:50am &rarr; 11:50am &middot; Premium Comfort</span></div>
+    </div>
+    <p class="narrative">Early start from Budapest &mdash; 6am departure means leaving the hotel around 4am for a 2-hour international check-in buffer. Worth an early night before.</p>
+  </div>
+</div>
+
+<div class="panel" id="tripwide">
+
+  <div class="leg">
+    <div class="leg-header">
+      <h2>Trip-wide notes</h2>
+    </div>
+    <p class="narrative">Not tied to a single day &mdash; wine and food context, money, timing, and packing for the whole trip.</p>
+
+    <div class="info-card">
+      <h3>Wine &amp; olive oil</h3>
+      <div class="info-row"><span class="info-label">Local varietals</span><span class="info-value">Plavac Mali and Malvasia are the two worth asking about &mdash; Croatia exports very little of its best wine and oil, so it's genuinely a taste you won't easily find at home</span></div>
+      <div class="info-row"><span class="info-label">Konobas</span><span class="info-value">many traditional taverns produce their own wine and olive oil &mdash; worth asking the waitstaff or winemaker about flavor profile and history rather than just ordering off the list</span></div>
+      <div class="info-row"><span class="info-label">Uje</span><span class="info-value">a well-regarded Croatian olive oil brand &mdash; the orange-infused version is a standout, worth bringing home</span></div>
+    </div>
+
+    <div class="info-card">
+      <h3>Money &amp; pricing context</h3>
+      <div class="info-row"><span class="info-label">Currency</span><span class="info-value">Croatia adopted the euro in 2023 &mdash; no longer the bargain it once was</span></div>
+      <div class="info-row"><span class="info-label">Still relatively good value</span><span class="info-value">hotels, private boat charters, and guided experiences generally remain less expensive than comparable trips in France or Italy, even at the high end</span></div>
+    </div>
+
+    <div class="info-card">
+      <h3>Timing</h3>
+      <div class="info-row"><span class="info-label">Shoulder season</span><span class="info-value">April&ndash;end of May and September&ndash;October are quieter and genuinely recommended over peak summer</span></div>
+      <div class="info-row"><span class="info-label">Peak season reality</span><span class="info-value">Dubrovnik, Split, and Hvar get nicknamed "the beehive" in July/August for the crowds &mdash; still a great trip, but worth knowing going in, and a reason to lean into less-touristy stops where this itinerary already does</span></div>
+      <div class="todo">Strategy for the coastal cities regardless of season: do city touring early morning or after 6pm, when cruise-ship crowds thin out &mdash; midday is when it's most packed.</div>
+    </div>
+
+    <div class="info-card">
+      <h3>Each island's personality</h3>
+      <div class="info-row"><span class="info-label">Korčula</span><span class="info-value">pine forests and vineyards</span></div>
+      <div class="info-row"><span class="info-label">Vis</span><span class="info-value">sea caves (its own "Blue Grotto"), wild pebbly beaches</span></div>
+      <div class="info-row"><span class="info-label">Brač</span><span class="info-value">olive groves, lemon trees, white limestone quarries</span></div>
+      <div class="info-row"><span class="info-label">Hvar</span><span class="info-value">lavender fields, the island's nightlife reputation is more Hvar Town than Stari Grad</span></div>
+      <div class="info-row"><span class="info-label">Mljet</span><span class="info-value">forests, monasteries, saltwater lakes</span></div>
+      <div class="todo">Krka National Park (near Šibenik) is a real alternative or addition to Plitvice &mdash; a massive waterfall with an overwater boardwalk, about an hour to circle, reachable by boat from Šibenik. More relevant to the Split/Dubrovnik leg than the Zagreb-to-Plitvice route, so it'll fit best when we build out Split.</div>
+    </div>
+
+    <div class="info-card">
+      <h3>Packing philosophy</h3>
+      <div class="info-row"><span class="info-label">Core idea</span><span class="info-value">fewer pieces, better fabrics, versatile styling &mdash; a wardrobe that moves easily between a hike, a boat, and a nicer dinner without overpacking</span></div>
+      <div class="info-row"><span class="info-label">Fabrics</span><span class="info-value">breathable, packable, wrinkle-resistant &mdash; cotton, linen, stretch knits</span></div>
+      <div class="info-row"><span class="info-label">Sun coverage</span><span class="info-value">long sleeves and airy fabrics often more comfortable than bare skin in peak sun; a hat with a tie or strap for windy boat days</span></div>
+      <div class="info-row"><span class="info-label">Shoes, rule of three</span><span class="info-value">one comfortable walking shoe for travel/touring days, one flat sandal, one dressier sandal for evenings &mdash; cobblestones and heels don't mix</span></div>
+      <div class="info-row"><span class="info-label">Packing cubes</span><span class="info-value">genuinely useful for a multi-stop trip like this one &mdash; organize by day-wear/evening-wear or by leg of the trip</span></div>
+      <div class="info-row"><span class="info-label">Room for purchases</span><span class="info-value">a foldable extra bag for the way home is worth packing, especially if buying anything fragile (coral jewelry, ceramics)</span></div>
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+<script>
+  document.getElementById('tabbar').addEventListener('click', function(e) {
+    var btn = e.target.closest('.tab');
+    if (!btn) return;
+    document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+    document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('active'); });
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+</script>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  var tripPlaces = [
+    {name: "Hotel Capital (booked)", day: "Where to stay", lat: 45.812169, lng: 15.981986, cat: "hotel"},
+    {name: "Boutique Hotel Victoria (Budapest)", day: "Where to stay", lat: 47.501389, lng: 19.038611, cat: "hotel"},
+    {name: "Buda Castle / Fisherman's Bastion", day: "Budapest Day 1", lat: 47.501945, lng: 19.034503, cat: "sight"},
+    {name: "Gell\u00e9rt Thermal Bath", day: "Budapest Day 1", lat: 47.4839, lng: 19.0511, cat: "sight"},
+    {name: "Sz\u00e9chenyi Thermal Bath", day: "Budapest Day 2", lat: 47.5186, lng: 19.0817, cat: "sight"},
+    {name: "Heroes' Square / City Park", day: "Budapest Day 2", lat: 47.5147, lng: 19.0776, cat: "sight"},
+    {name: "Doh\u00e1ny St Synagogue / Jewish Quarter", day: "Budapest Day 3", lat: 47.4977, lng: 19.0598, cat: "sight"},
+    {name: "Szimpla Kert", day: "Budapest Day 3", lat: 47.4972, lng: 19.0625, cat: "food"},
+    {name: "Caf\u00e9 K\u00f6r", day: "Budapest food", lat: 47.5006, lng: 19.0567, cat: "food"},
+    {name: "Gundel", day: "Budapest food", lat: 47.5158, lng: 19.0801, cat: "food"},
+    {name: "Rosenstein Vend\u00e9gl\u0151", day: "Budapest food", lat: 47.4989, lng: 19.0778, cat: "food"},
+    {name: "Zagreb Cathedral", day: "Zagreb, Day 3", lat: 45.8146217, lng: 15.9794382, cat: "sight"},
+    {name: "Ban Jelačić Square", day: "Zagreb, Day 3", lat: 45.8131208, lng: 15.9773008, cat: "sight"},
+    {name: "Dolac Market", day: "Zagreb, Day 3", lat: 45.8139846, lng: 15.9775104, cat: "sight"},
+    {name: "St. Mark's Church", day: "Zagreb, Day 3", lat: 45.816398, lng: 15.9736343, cat: "sight"},
+    {name: "Lotrščak Tower", day: "Zagreb, Day 3", lat: 45.8146235, lng: 15.9733241, cat: "sight"},
+    {name: "Grič Tunnel", day: "Zagreb, Day 3", lat: 45.8148631, lng: 15.9710007, cat: "sight"},
+    {name: "Zagreb City Museum", day: "Zagreb, Day 3", lat: 45.8184122, lng: 15.9750842, cat: "sight"},
+    {name: "Klovićevi Dvori Gallery", day: "Zagreb, optional", lat: 45.8150844, lng: 15.9746188, cat: "sight"},
+    {name: "Tkalčićeva Street", day: "Zagreb, Day 3", lat: 45.8174906, lng: 15.9762643, cat: "sight"},
+    {name: "Zagreb 360° deck", day: "Zagreb, optional", lat: 45.8128642, lng: 15.9757637, cat: "sight"},
+    {name: "British Square", day: "Zagreb, optional (Sun only)", lat: 45.8129821, lng: 15.9645042, cat: "sight"},
+    {name: "Botanical Garden", day: "Zagreb, optional Day 2", lat: 45.8046473, lng: 15.9714737, cat: "sight"},
+    {name: "Museum of Contemporary Art", day: "Zagreb, optional Day 2", lat: 45.7784104, lng: 15.9818911, cat: "sight"},
+    {name: "Lauba", day: "Zagreb, optional Day 2", lat: 45.811749, lng: 15.9401697, cat: "sight"},
+    {name: "Chocolate Museum Zagreb", day: "Zagreb, Day 3", lat: 45.8095288, lng: 15.9719292, cat: "sight"},
+    {name: "Vinodol", day: "Zagreb, sit-down dinner", lat: 45.8113739, lng: 15.9756898, cat: "food"},
+    {name: "Stari Fijaker", day: "Zagreb, sit-down dinner", lat: 45.8138217, lng: 15.9707169, cat: "food"},
+    {name: "La Štruk", day: "Zagreb, štrukli specialist", lat: 45.8148547, lng: 15.9767932, cat: "food"},
+    {name: "Zinfandel's (Esplanade)", day: "Zagreb, nicer dinner, veg-friendly", lat: 45.8053938, lng: 15.9760117, cat: "food"},
+    {name: "Zrno Bio Bistro", day: "Zagreb, vegetarian & vegan", lat: 45.8111111, lng: 15.9666667, cat: "food"},
+    {name: "Vegehop", day: "Zagreb, vegetarian & vegan", lat: 45.8143448, lng: 15.9882673, cat: "food"},
+    {name: "Green Point", day: "Zagreb, vegetarian & vegan", lat: 45.811991, lng: 15.9723977, cat: "food"},
+    {name: "Koykan (Tkalčićeva)", day: "Zagreb, vegetarian & vegan", lat: 45.8144287, lng: 15.9760369, cat: "food"},
+    {name: "B&B Heritage Villa Apolon", day: "Hvar, where to stay", lat: 43.1838628, lng: 16.5922405, cat: "hotel"},
+    {name: "Franciscan Monastery (Hvar Town)", day: "Hvar", lat: 43.1682021, lng: 16.4430662, cat: "sight"},
+    {name: "Španjola (Fortica) Fortress", day: "Hvar", lat: 43.1749841, lng: 16.4418705, cat: "sight"},
+    {name: "Stari Grad Plain", day: "Hvar", lat: 43.1844258, lng: 16.6168017, cat: "sight"},
+    {name: "Malo Grablje / Berti's Konoba", day: "Hvar", lat: 43.1692992, lng: 16.5034369, cat: "sight"},
+    {name: "Brusje", day: "Hvar", lat: 43.1920813, lng: 16.4884465, cat: "sight"},
+    {name: "Konoba Menego", day: "Hvar, food", lat: 43.1733315, lng: 16.4423034, cat: "food"},
+    {name: "Cathedral of St. Stephen", day: "Hvar", lat: 43.1722339, lng: 16.4433273, cat: "sight"},
+    {name: "Nook", day: "Hvar, vegetarian & vegan", lat: 43.186245, lng: 16.5983477, cat: "food"},
+    {name: "Jurin Podrum", day: "Hvar, food", lat: 43.1839409, lng: 16.5977995, cat: "food"},
+    {name: "Palmižana Beach", day: "Hvar, optional water day", lat: 43.158697, lng: 16.391485, cat: "sight"},
+    {name: "Villa Dubrovnik", day: "Dubrovnik, where to stay", lat: 42.6383095, lng: 18.1272564, cat: "hotel"},
+    {name: "Karmen Apartments", day: "Dubrovnik, where to stay (alt)", lat: 42.6399747, lng: 18.1115393, cat: "hotel"},
+    {name: "Dubrovnik City Walls", day: "Dubrovnik", lat: 42.6399806, lng: 18.1114944, cat: "sight"},
+    {name: "Mount Srđ cable car", day: "Dubrovnik", lat: 42.643056, lng: 18.1116695, cat: "sight"},
+    {name: "Lokrum", day: "Dubrovnik, water day", lat: 42.6310979, lng: 18.1176678, cat: "sight"},
+    {name: "Banje Beach", day: "Dubrovnik, water day", lat: 42.6416772, lng: 18.1160574, cat: "sight"},
+    {name: "Nishta", day: "Dubrovnik, vegetarian & vegan", lat: 42.6418612, lng: 18.1086613, cat: "food"},
+    {name: "Konoba Dubrava", day: "Dubrovnik, dinner", lat: 42.6429533, lng: 18.1291097, cat: "food"},
+    {name: "Pantarul", day: "Dubrovnik, dinner", lat: 42.6543069, lng: 18.0775469, cat: "food"},
+    {name: "Buža Bar", day: "Dubrovnik, drinks", lat: 42.639053, lng: 18.108707, cat: "food"}
+  ];
+
+  var catColor = { hotel: "#c78a3d", sight: "#0f4c4c", food: "#8a3d3d" };
+
+  var map = L.map('trip-map').setView([45.8135, 15.9755], 14);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  tripPlaces.forEach(function(p) {
+    var marker = L.circleMarker([p.lat, p.lng], {
+      radius: 7,
+      fillColor: catColor[p.cat] || "#333",
+      color: "#fff",
+      weight: 1.5,
+      fillOpacity: 0.9
+    }).addTo(map);
+    marker.bindPopup('<strong>' + p.name + '</strong><br><span style="color:#888;font-size:12px;">' + p.day + '</span>');
+  });
+</script>
+
+</body>
+</html>
