@@ -1247,6 +1247,10 @@
     {name: "Vegehop", day: "Zagreb, vegetarian & vegan", lat: 45.8143448, lng: 15.9882673, cat: "food"},
     {name: "Green Point", day: "Zagreb, vegetarian & vegan", lat: 45.811991, lng: 15.9723977, cat: "food"},
     {name: "Koykan (Tkalčićeva)", day: "Zagreb, vegetarian & vegan", lat: 45.8144287, lng: 15.9760369, cat: "food"},
+    {name: "Hotel Degenija (booked)", day: "Plitvice, where to stay", lat: 44.9016, lng: 15.6533, cat: "hotel"},
+    {name: "Plitvice Lakes — Entrance 1", day: "Plitvice, hike day", lat: 44.9046, lng: 15.6110, cat: "sight"},
+    {name: "Trogir Old Town", day: "Split day, stop en route", lat: 43.5165, lng: 16.2508, cat: "sight"},
+    {name: "Diocletian's Palace", day: "Split, transit afternoon", lat: 43.5081, lng: 16.4402, cat: "sight"},
     {name: "B&B Heritage Villa Apolon", day: "Hvar, where to stay", lat: 43.1838628, lng: 16.5922405, cat: "hotel"},
     {name: "Franciscan Monastery (Hvar Town)", day: "Hvar", lat: 43.1682021, lng: 16.4430662, cat: "sight"},
     {name: "Španjola (Fortica) Fortress", day: "Hvar", lat: 43.1749841, lng: 16.4418705, cat: "sight"},
@@ -1287,6 +1291,29 @@
       fillOpacity: 0.9
     }).addTo(map);
     marker.bindPopup('<strong>' + p.name + '</strong><br><span style="color:#888;font-size:12px;">' + p.day + '</span>');
+  });
+
+  // Recenter the map when a tab is tapped
+  var tabViews = {
+    day1:  {center: [45.8135, 15.9755], zoom: 13},   // Travel — ends in Zagreb
+    day3:  {center: [45.8135, 15.9755], zoom: 14},   // Zagreb
+    day6:  {center: [44.8950, 15.6300], zoom: 12},   // Plitvice
+    day7:  {center: [43.5120, 16.3450], zoom: 11},   // Split + Trogir
+    day8:  {center: [43.1750, 16.5000], zoom: 11},   // Hvar island
+    day9:  {center: [42.6410, 18.1100], zoom: 13},   // Dubrovnik
+    day10: {center: [47.5025, 19.0450], zoom: 13},   // Budapest
+    day11: {center: [47.5025, 19.0450], zoom: 12}    // Return — Budapest
+  };
+  document.getElementById('tabbar').addEventListener('click', function(e) {
+    var btn = e.target.closest('.tab');
+    if (!btn) return;
+    var view = tabViews[btn.dataset.tab];
+    if (view) {
+      map.flyTo(view.center, view.zoom, {duration: 1.2});
+    } else {
+      // Trip-wide: fit every pin on the trip
+      map.flyToBounds(L.latLngBounds(tripPlaces.map(function(p) { return [p.lat, p.lng]; })), {padding: [30, 30], duration: 1.2});
+    }
   });
 </script>
 
