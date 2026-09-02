@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>The Journey Begins — LAX to Zagreb</title>
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -16,6 +17,7 @@
     --card: #ffffff;
     --teal: #0f4c4c;
     --amber: #c78a3d;
+    --amber-text: #8a5a1d;
     --line: #d8d3c4;
     --muted: #6b6b62;
   }
@@ -38,7 +40,7 @@
     letter-spacing: 3px;
     text-transform: uppercase;
     font-size: 12px;
-    color: var(--amber);
+    color: var(--amber-text);
     font-weight: 600;
   }
   h1 {
@@ -64,7 +66,7 @@
   .leg-number {
     font-family: -apple-system, Helvetica, Arial, sans-serif;
     font-size: 13px;
-    color: var(--amber);
+    color: var(--amber-text);
     font-weight: 700;
     letter-spacing: 1px;
   }
@@ -156,7 +158,7 @@
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--amber);
+    color: var(--amber-text);
     font-weight: 700;
     margin-bottom: 6px;
   }
@@ -206,7 +208,7 @@
     border-color: var(--teal);
   }
   .tab.stub {
-    opacity: 0.5;
+    opacity: 1;
   }
   .panel { display: none; }
   .panel.active { display: block; }
@@ -216,6 +218,82 @@
     color: var(--muted);
     font-style: italic;
     font-size: 17px;
+  }
+  button { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+  .tabbar { scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .tabbar::-webkit-scrollbar { display: none; }
+  .map-row {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--line);
+    background: var(--card);
+    scroll-margin-top: 70px;
+  }
+  .map-inner { max-width: 860px; margin: 0 auto; }
+  .map-caption {
+    font-family: -apple-system, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  #map-city-label { font-weight: 600; color: var(--teal); }
+  #trip-map { height: 420px; border-radius: 8px; border: 1px solid var(--line); }
+
+  /* ---- Mobile-first: phone layout ---- */
+  @media (max-width: 767px) {
+    .hero { padding: calc(24px + env(safe-area-inset-top)) 20px 20px; }
+    h1 { font-size: 23px; letter-spacing: 0; line-height: 1.35; }
+    .eyebrow { font-size: 10px; letter-spacing: 2px; }
+    .subtitle { font-size: 14px; }
+    .tabbar {
+      gap: 8px;
+      padding: 10px 12px;
+      padding-top: max(10px, env(safe-area-inset-top));
+      scroll-snap-type: x proximity;
+    }
+    .tab {
+      min-height: 44px;
+      padding: 10px 16px;
+      font-size: 14px;
+      scroll-snap-align: start;
+    }
+    .map-row { padding: 12px 12px 16px; scroll-margin-top: 62px; }
+    .map-caption { margin-bottom: 6px; font-size: 12px; }
+    .map-caption-long { display: none; }
+    #trip-map { height: 42vh; min-height: 260px; border-radius: 10px; }
+    .wrap { padding: 0 16px calc(56px + env(safe-area-inset-bottom)); }
+    .leg { margin-top: 40px; }
+    .leg-header { flex-direction: column; align-items: flex-start; gap: 2px; }
+    .leg h2 { font-size: 22px; line-height: 1.3; }
+    .leg-sub { font-size: 14px; margin-bottom: 18px; }
+    .narrative { font-size: 16px; margin-bottom: 20px; }
+    .info-card { padding: 16px; border-radius: 10px; }
+    .info-card h3 { font-size: 17px; }
+    .info-row { flex-direction: column; gap: 2px; padding: 10px 0; }
+    .info-value { text-align: left; }
+    .picks { grid-template-columns: 1fr; gap: 10px; margin: 20px 0; }
+    .pick { padding: 14px 16px; border-radius: 10px; }
+    .photo-strip {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 6px;
+      border-radius: 0;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .photo-strip::-webkit-scrollbar { display: none; }
+    .photo-strip img {
+      flex: 0 0 80%;
+      height: 170px;
+      scroll-snap-align: center;
+      border-radius: 8px;
+    }
+    .divider { margin: 32px 0; letter-spacing: 12px; }
+    .stub-panel { padding: 60px 16px; }
   }
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -241,13 +319,13 @@
   <button class="tab stub" data-tab="tripwide">Trip-wide</button>
 </div>
 
-<div id="map-row" style="padding: 20px 24px; border-bottom: 1px solid var(--line); background: var(--card);">
-  <div style="max-width: 860px; margin: 0 auto;">
-    <div style="font-family: -apple-system, Helvetica, Arial, sans-serif; font-size: 13px; color: var(--muted); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
-      <span>Every pin from the plan, in one place &mdash; labeled by day so you can see what's nearby wherever you are.</span>
-      <span id="map-city-label" style="font-weight: 600; color: var(--teal);">The map follows the tab you pick &mdash; zoom/pan to explore</span>
+<div id="map-row" class="map-row">
+  <div class="map-inner">
+    <div class="map-caption">
+      <span class="map-caption-long">Every pin from the plan, in one place &mdash; labeled by day so you can see what's nearby wherever you are.</span>
+      <span id="map-city-label">The map follows the tab you pick &mdash; zoom/pan to explore</span>
     </div>
-    <div id="trip-map" style="height: 420px; border-radius: 8px; border: 1px solid var(--line);"></div>
+    <div id="trip-map"></div>
   </div>
 </div>
 
@@ -1345,6 +1423,12 @@
     document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('active'); });
     btn.classList.add('active');
     document.getElementById(btn.dataset.tab).classList.add('active');
+    // On tab switch, bring the map + top of the new day into view
+    var mapRow = document.getElementById('map-row');
+    if (mapRow && mapRow.getBoundingClientRect().top < 0) {
+      mapRow.scrollIntoView({behavior: 'smooth', block: 'start'});
+    }
+    btn.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'center'});
   });
 </script>
 
@@ -1441,9 +1525,9 @@
   }
 
   function popupHtml(p) {
-    var html = '<strong>' + p.name + '</strong><br><span style="color:#888;font-size:12px;">' + p.day + '</span>';
+    var html = '<strong>' + p.name + '</strong><br><span style="color:#6b6b62;font-size:12px;">' + p.day + '</span>';
     if (userLatLng) {
-      html += '<br><span style="font-size:12px;color:#1a73e8;font-weight:600;">' + fmtDist(map.distance(userLatLng, [p.lat, p.lng])) + ' from you</span>';
+      html += '<br><span style="font-size:12px;color:#1557b0;font-weight:600;">' + fmtDist(map.distance(userLatLng, [p.lat, p.lng])) + ' from you</span>';
     }
     html += '<br><a href="https://www.google.com/maps/dir/?api=1&destination=' + p.lat + ',' + p.lng + '" target="_blank" style="font-size:12px;">Directions in Google Maps &#8599;</a>';
     return html;
