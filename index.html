@@ -1433,6 +1433,22 @@
     attribution: '&copy; OpenStreetMap contributors'
   }).addTo(map);
 
+  // --- Live "you are here" location ---
+  var userMarker = null, userCircle = null, userLatLng = null, watching = false, locateBtn = null;
+
+  function fmtDist(m) {
+    return m < 1000 ? Math.round(m) + ' m' : (m / 1000).toFixed(1) + ' km';
+  }
+
+  function popupHtml(p) {
+    var html = '<strong>' + p.name + '</strong><br><span style="color:#888;font-size:12px;">' + p.day + '</span>';
+    if (userLatLng) {
+      html += '<br><span style="font-size:12px;color:#1a73e8;font-weight:600;">' + fmtDist(map.distance(userLatLng, [p.lat, p.lng])) + ' from you</span>';
+    }
+    html += '<br><a href="https://www.google.com/maps/dir/?api=1&destination=' + p.lat + ',' + p.lng + '" target="_blank" style="font-size:12px;">Directions in Google Maps &#8599;</a>';
+    return html;
+  }
+
   tripPlaces.forEach(function(p) {
     var marker = L.circleMarker([p.lat, p.lng], {
       radius: 7,
@@ -1441,8 +1457,59 @@
       weight: 1.5,
       fillOpacity: 0.9
     }).addTo(map);
-    marker.bindPopup('<strong>' + p.name + '</strong><br><span style="color:#888;font-size:12px;">' + p.day + '</span>');
+    marker.bindPopup(popupHtml(p));
+    marker.on('popupopen', function() { marker.setPopupContent(popupHtml(p)); });
   });
+
+  function startLocate() {
+    map.locate({watch: true, enableHighAccuracy: true});
+    watching = true;
+    try { localStorage.setItem('tripLocate', 'on'); } catch (e) {}
+    if (locateBtn) locateBtn.textContent = '📍 Locating…';
+  }
+
+  map.on('locationfound', function(e) {
+    var firstFix = !userMarker;
+    userLatLng = e.latlng;
+    if (firstFix) {
+      userCircle = L.circle(e.latlng, {radius: e.accuracy / 2, color: '#1a73e8', weight: 1, fillOpacity: 0.08}).addTo(map);
+      userMarker = L.circleMarker(e.latlng, {radius: 8, fillColor: '#1a73e8', color: '#fff', weight: 2.5, fillOpacity: 1}).addTo(map).bindPopup('You are here');
+      map.flyTo(e.latlng, Math.max(map.getZoom(), 14));
+    } else {
+      userMarker.setLatLng(e.latlng);
+      userCircle.setLatLng(e.latlng).setRadius(e.accuracy / 2);
+    }
+    if (locateBtn) locateBtn.textContent = '📍 Following you';
+  });
+
+  map.on('locationerror', function() {
+    watching = false;
+    if (locateBtn) {
+      locateBtn.textContent = '📍 Location blocked — allow in browser settings';
+      setTimeout(function() { locateBtn.textContent = '📍 Show my location'; }, 4000);
+    }
+  });
+
+  var LocateControl = L.Control.extend({
+    options: {position: 'topleft'},
+    onAdd: function() {
+      var btn = L.DomUtil.create('button', '');
+      btn.type = 'button';
+      btn.textContent = '📍 Show my location';
+      btn.style.cssText = 'font-family:-apple-system,sans-serif;font-size:13px;padding:7px 12px;background:#fff;border:2px solid rgba(0,0,0,0.2);border-radius:6px;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.15);';
+      locateBtn = btn;
+      L.DomEvent.disableClickPropagation(btn);
+      L.DomEvent.on(btn, 'click', function(ev) {
+        L.DomEvent.stopPropagation(ev);
+        if (!watching) { startLocate(); }
+        else if (userLatLng) { map.flyTo(userLatLng, Math.max(map.getZoom(), 15)); }
+      });
+      return btn;
+    }
+  });
+  map.addControl(new LocateControl());
+
+  try { if (localStorage.getItem('tripLocate') === 'on') startLocate(); } catch (e) {}
 
   // Recenter the map when a tab is tapped
   var tabViews = {
